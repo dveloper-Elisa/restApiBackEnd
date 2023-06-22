@@ -9,12 +9,14 @@ const authenticate = require("./userServices/authentication");
 // using app
 app.get("/", authenticate.Test);
 app.get("/api/users", authenticate.fetchData);
+app.delete("/api/:id", authenticate.deleteAccount);
 app.post(
   "/api/registeruser",
   authenticate.emailVerify,
   authenticate.registerUser
 );
 app.get("/api/resetassword", authenticate.sendResetPassword);
+
 // listening and ports
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
