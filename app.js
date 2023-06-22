@@ -8,6 +8,7 @@ const authenticate = require("./userServices/authentication");
 
 // using app
 app.get("/", authenticate.Test);
+app.post("/api/login", authenticate.userLogin);
 app.get("/api/users", authenticate.fetchData);
 app.delete("/api/:id", authenticate.deleteAccount);
 app.post(
@@ -15,7 +16,7 @@ app.post(
   authenticate.emailVerify,
   authenticate.registerUser
 );
-app.get("/api/resetassword", authenticate.sendResetPassword);
+app.get("/api/resetpassword", authenticate.sendResetPassword);
 
 // listening and ports
 const PORT = process.env.PORT || 3000;

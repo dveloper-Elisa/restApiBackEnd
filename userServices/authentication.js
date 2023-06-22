@@ -20,6 +20,29 @@ const fetchData = async (req, res) => {
   }
 };
 
+// Creation of login page
+const userLogin = async (req, res) => {
+  const user = req.body;
+  const login = await prisma.userLogin.findFirst({
+    where: {
+      email: user.email,
+      password: user.password,
+    },
+  });
+  if (login) {
+    return res.status(200).json({
+      status: true,
+      messagge: "Login success 👍",
+      user: login,
+    });
+  } else {
+    return res.status(500).json({
+      status: false,
+      message: "User not found Check email or password 👎",
+    });
+  }
+};
+
 // verify Email
 
 const emailVerify = async (req, res, next) => {
@@ -121,4 +144,5 @@ module.exports = {
   emailVerify,
   sendResetPassword,
   deleteAccount,
+  userLogin,
 };
