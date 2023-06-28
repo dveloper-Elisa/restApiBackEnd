@@ -4,9 +4,8 @@ const router = new Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient({ log: ["query"] });
 const crypto = require("crypto");
-
 const Test = (req, res) => {
-  res.send({ message: "now every thing working 👍" });
+  res.send({ message: "Now every Thing working 👍" });
 };
 
 // displaying information from database
